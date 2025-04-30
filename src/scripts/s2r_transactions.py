@@ -29,7 +29,7 @@ src_df = (spark
 )
 
 # Example: Convert binary key and value to string
-src_df = src_df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+src_df = src_df.selectExpr("CAST(key AS STRING) as key", "CAST(value AS STRING) as value")
 
 # Example: Parse JSON data from the value column
 # df = df.selectExpr("CAST(value AS STRING)", "from_json(value, schema) as data")
@@ -37,7 +37,7 @@ src_df = src_df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 query = ( src_df
     .writeStream
     .format("parquet")  # Or your desired output format (e.g., "parquet", "delta")
-    # .trigger(continuous='1 second')
+    # .trigger('5 seconds')
     .option("checkpointLocation", checkpoint_dir)  # For fault tolerance
     .option("path",(os.path.join(data_dir,spark_config["raw_transactions_tbl"]) ))
     .start()
