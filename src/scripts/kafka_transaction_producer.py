@@ -31,15 +31,16 @@ for _ in range(no_msgs):
     
 
     # Create transaction faker model
-    transaction_faker = TransactionFakerModel(seed=42)
+    transaction_faker = TransactionFakerModel()
     
     # Generate transactions
-    msg_dict = transaction_faker.generate_transactions(3)
+    msg_dict = transaction_faker.generate_transactions(1)
     # print(msg_dict)
 
     json_str = json.dumps(msg_dict[0])
+    print(json_str)
 
-    print(f"Partition :: {partition} :: {json_str}")
+    # print(f"Partition :: {partition} :: {json_str}")
     msg_key = random.randint(100,99999)
     
     producer.produce(

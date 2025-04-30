@@ -7,7 +7,7 @@ from pyspark.sql.window import Window
 from src.config.base_config import spark_config
 
 data_dir = spark_config['data_dir']
-checkpoint_dir = os.path.join(data_dir,"checkpoints","s2t_onlineusers")
+checkpoint_dir = os.path.join(data_dir,"checkpoints","s2r_onlineusers")
 
 # CMD >> spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0  /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/s2r_online_users.py
 
