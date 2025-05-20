@@ -6,9 +6,9 @@ from datetime import datetime
 import random
 import sys
 # from scripts.data_generator import create_transaction_data
-from scripts.trans_data_generator import TransactionFakerModel
+from src.scripts.trans_data_generator import TransactionFakerModel
 
-# >> python -m  /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/kafka_transaction_producer.py 100
+# >> python   /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/kafka_transaction_producer.py 100
 no_msgs = int(sys.argv[1])
 # no_msgs = 3
 conf = {

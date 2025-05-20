@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 import random
 from faker import Faker
+from faker.providers import BaseProvider
 from pydantic import BaseModel, Field
 
 fake = Faker()
@@ -11,10 +12,24 @@ fake = Faker()
 users_file = "/mnt/d/jegan/prct/data/mock_data/users.csv"
 transaction_file = "/mnt/d/jegan/prct/data/mock_data/transactions.csv"
 
+# Custom provider to generate sequnce number
+class  SequenceNoProvider(BaseProvider):
+    def __init__(self, generator):
+        super().__init__(generator)
+        self.current = 999
+    
+    def seq_no_generator(self):
+        self.current +=1
+        return self.current
+
+fake.add_provider(SequenceNoProvider)
+    
+
 # num_records = 1000
 class UsersData(BaseModel):
     # created_time : datetime = datetime.now().isoformat()
-    user_id: int = Field(default_factory=lambda: random.randint(999,4999))
+    # user_id: int = Field(default_factory=lambda: random.randint(999,1001000))
+    user_id: int = Field(default_factory=fake.seq_no_generator)
     first_name:str = Field(default_factory= fake.first_name)
     last_name:str = Field(default_factory= fake.last_name)
     email:str = Field(default_factory= fake.email)
@@ -45,6 +60,7 @@ class TrasnactionData(BaseModel):
     hash_id:str =  Field(default_factory= fake.uuid4)
 
 def save_csv_file(input_data, filename: str):
+    print("started saving csv file..!")
     with open(filename, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         # Write header
@@ -52,6 +68,7 @@ def save_csv_file(input_data, filename: str):
         # Write transaction rows
         for row_data in input_data:
             writer.writerow(row_data.values())
+    print(f"CSV file {filename} saved successfully")
 
 # Generate mock data 
 def create_user_data(num_records):

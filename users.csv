@@ -1,0 +1,11 @@
+user_id,first_name,last_name,email,city,postal_code,phone_number,age,gender,location,status,ip_address,last_login,loyalty_level,hash_id
+1000,Stacey,Hunt,anthony24@example.net,Port Deborahfurt,31847,(580)766-1647,30,Male,Lake Hollyview,Active,93.232.223.62,2025-03-07,bronze,c56ad9cd-bc57-43a1-b8bc-a7a1f7f2095e
+1001,Jennifer,Le,brenda12@example.com,Bishopville,45744,2385765836,78,Non-Binary,Jamiemouth,Active,175.121.159.5,2025-02-14,silver,9b5e0acc-9211-4a45-98cc-b9816b6f7f19
+1002,Gabriel,Mcdaniel,holly54@example.com,Danielleburgh,88532,835-943-1147x90693,79,Non-Binary,Matthewsland,Suspended,212.34.205.22,2025-03-26,new,16dea3b4-ed21-4c54-8caf-8a2601995e92
+1003,Linda,Short,kenneth30@example.com,New Adrienneland,31716,435.864.0885x639,57,Male,Oconnortown,Inactive,177.101.169.50,2025-03-19,gold,51694cb9-be61-460e-9c23-fa4fbc531a79
+1004,Alexandra,Stephens,jesus47@example.net,Ryanland,72571,810-461-2686x05200,70,Male,Michaelborough,Active,8.9.43.58,2025-03-09,bronze,5406cf5d-1eec-437c-9790-9f9f1bc26fe1
+1005,Emily,Morse,tdavis@example.net,New Kyle,49260,3872287939,55,Male,Joymouth,Inactive,108.145.198.242,2025-03-19,bronze,b42792cd-2ae5-49a9-ac14-9ead589bee27
+1006,Monica,Reed,delacruzmonica@example.org,Josephfort,51712,001-631-992-7037x616,83,Non-Binary,Nelsonburgh,Suspended,59.94.170.141,2025-02-12,platinum,4c1820fb-48b7-4d1b-8e0c-e66ee70cae4e
+1007,Tiffany,Woodard,bruce52@example.com,South Williambury,85693,377-318-6015,53,Male,Keithton,Inactive,187.75.147.186,2025-02-25,platinum,35e2e1ed-80a2-455a-9b77-78174b7a9e69
+1008,Lee,Richardson,greenkathleen@example.net,Hensleymouth,81031,912.495.3571x09210,47,Non-Binary,Vazquezport,Active,169.198.140.110,2025-01-09,new,4c47f49b-af74-433b-8267-e8a30fbbbab7
+1009,Joseph,Gay,brenda18@example.com,East Elizabethborough,03850,619.218.5898,39,Male,North Williamhaven,Inactive,126.37.172.175,2025-04-09,bronze,ccd338b4-3cb5-4729-8037-a94d53468362

@@ -37,7 +37,8 @@ src_df = src_df.selectExpr("CAST(key AS STRING) as key", "CAST(value AS STRING) 
 query = ( src_df
     .writeStream
     .format("parquet")  # Or your desired output format (e.g., "parquet", "delta")
-    # .trigger('5 seconds')
+    # .trigger('10 seconds')
+    # .trigger(processingTime="10 seconds")
     .option("checkpointLocation", checkpoint_dir)  # For fault tolerance
     .option("path",(os.path.join(data_dir,spark_config["raw_transactions_tbl"]) ))
     .start()

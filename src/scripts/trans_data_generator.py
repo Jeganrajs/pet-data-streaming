@@ -41,7 +41,7 @@ class TransactionFakerModel:
     
     def generate_transaction_data(self) -> Dict[str, Any]:
         """
-        Generate a single transaction record with 100 columns.
+        Generate transaction data.
         
         Returns:
             Dictionary with transaction data
@@ -79,14 +79,14 @@ class TransactionFakerModel:
             'transaction_type': 'purchase' if random.random() < 0.8 else 'refund',
             
             # 11-20: Customer information
-            'customer_id': random.randint(999,4999),
-            'customer_email': self.faker.email(),
-            'customer_name': self.faker.name(),
-            'customer_phone': self.faker.phone_number(),
-            'customer_ip_address': self.faker.ipv4(),
-            'customer_country': self.faker.country_code(),
-            'customer_city': self.faker.city(),
-            'customer_postal_code': self.faker.postcode(),
+            'customer_id': random.randint(999,1001000),
+            # 'customer_email': self.faker.email(),
+            # 'customer_name': self.faker.name(),
+            # 'customer_phone': self.faker.phone_number(),
+            # 'customer_ip_address': self.faker.ipv4(),
+            # 'customer_country': self.faker.country_code(),
+            # 'customer_city': self.faker.city(),
+            # 'customer_postal_code': self.faker.postcode(),
             'customer_account_age_days': random.randint(1, 3650),
             'customer_loyalty_level': random.choice(['bronze', 'silver', 'gold', 'platinum', 'new']),
             
@@ -189,7 +189,7 @@ class TransactionFakerModel:
         
         return transaction
     
-    def generate_transactions(self, num_transactions: int = 100) -> List[Dict[str, Any]]:
+    def generate_transactions(self, num_transactions: int = 10) -> List[Dict[str, Any]]:
         """
         Generate multiple transaction records.
         
@@ -207,7 +207,7 @@ class TransactionFakerModel:
 # Example usage
 if __name__ == "__main__":
     # Create transaction faker model
-    transaction_faker = TransactionFakerModel(seed=42)
+    transaction_faker = TransactionFakerModel()
     
     # Generate 5 transactions
     transactions = transaction_faker.generate_transactions(3)
