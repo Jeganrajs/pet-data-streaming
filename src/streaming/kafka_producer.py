@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 import random
 import sys
-from src.scripts.data_generator import create_user_data, create_transaction_data
+from data_gen.data_generator import create_user_data, create_transaction_data
 
 no_msgs = int(sys.argv[1])
 conf = {

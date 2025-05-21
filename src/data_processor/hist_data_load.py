@@ -5,8 +5,8 @@ import pandas as pd
 from datetime import datetime
 # from pyspark.sql import SparkSession
 # from pyspark.sql import functions as F
-from src.scripts.data_generator import create_user_data
-from src.scripts.trans_data_generator import TransactionFakerModel
+from data_gen.data_generator import create_user_data
+from data_gen.trans_data_generator import TransactionFakerModel
 from src.config.base_config import pg_config,spark_config
 
 
