@@ -2,11 +2,11 @@ import os
 import sys 
 
 # Postgres database related configs
-pg_config = {"pg_schema":"public",
+pg_config = {"pg_schema":"ods",
             "pg_user_table":"online_users",
-            "pg_user":"postgres",
+            "pg_user":"jegan",
             "pg_pwd": os.environ['PG_PWD'],
-            "pg_url":"jdbc:postgresql://localhost:5432/postgres",
+            "pg_url":"jdbc:postgresql://localhost:5432/online_orders",
             "pg_driver": "org.postgresql.Driver"
             }
 
