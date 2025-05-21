@@ -6,9 +6,9 @@ from datetime import datetime
 import random
 import sys
 # from scripts.data_generator import create_transaction_data
-from scripts.trans_data_generator import TransactionFakerModel
+from src.scripts.trans_data_generator import TransactionFakerModel
 
-# >> python -m  /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/kafka_transaction_producer.py 100
+# >> python   /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/kafka_transaction_producer.py 100
 no_msgs = int(sys.argv[1])
 # no_msgs = 3
 conf = {
@@ -31,15 +31,16 @@ for _ in range(no_msgs):
     
 
     # Create transaction faker model
-    transaction_faker = TransactionFakerModel(seed=42)
+    transaction_faker = TransactionFakerModel()
     
     # Generate transactions
-    msg_dict = transaction_faker.generate_transactions(3)
+    msg_dict = transaction_faker.generate_transactions(1)
     # print(msg_dict)
 
     json_str = json.dumps(msg_dict[0])
+    print(json_str)
 
-    print(f"Partition :: {partition} :: {json_str}")
+    # print(f"Partition :: {partition} :: {json_str}")
     msg_key = random.randint(100,99999)
     
     producer.produce(

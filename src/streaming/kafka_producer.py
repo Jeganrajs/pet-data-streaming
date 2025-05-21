@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 import random
 import sys
-from scripts.data_generator import create_user_data, create_transaction_data
+from data_gen.data_generator import create_user_data, create_transaction_data
 
 no_msgs = int(sys.argv[1])
 conf = {
@@ -30,13 +30,13 @@ for _ in range(no_msgs):
     msg_dict = create_user_data(1) # You should get only one record at a time
     json_str = json.dumps(msg_dict[0])
     print(f"Partition :: {partition} :: {json_str}")
-    msg_key = random.randint(100,99999)
+    # msg_key = random.randint(100,99999)
     
-    producer.produce(
-        "OnlineUsersTopic",
-        key=str(msg_key),
-        value=json_str,
-        partition=partition,        
-    )
-    producer.poll(1)
+    # producer.produce(
+    #     "OnlineUsersTopic",
+    #     key=str(msg_key),
+    #     value=json_str,
+    #     partition=partition,        
+    # )
+    # producer.poll(1)
     time.sleep(input_interval)

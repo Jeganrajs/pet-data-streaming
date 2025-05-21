@@ -7,9 +7,9 @@ from pyspark.sql.window import Window
 from src.config.base_config import spark_config
 
 data_dir = spark_config['data_dir']
-checkpoint_dir = os.path.join(data_dir,"checkpoints","s2t_onlineusers")
+checkpoint_dir = os.path.join(data_dir,"checkpoints","s2t_transactions")
 
-# CMD >> spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0  /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/s2r_online_users.py
+# >> spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0  /mnt/d/jegan/git_repos/pet-data-streaming/src/scripts/s2r_transactions.py
 
 spark = (
     SparkSession.builder.appName("KafkaToRawApp")
@@ -22,14 +22,14 @@ src_df = (spark
     .readStream
     .format("kafka")
     .option("kafka.bootstrap.servers", "localhost:9092")
-    .option("subscribe", "OnlineUsersTopic")
+    .option("subscribe", "OnlineTransactionsTopic")
     .option("failOnDataLoss", "false")
     .option("includeHeaders", "true")
     .load()
 )
 
 # Example: Convert binary key and value to string
-src_df = src_df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+src_df = src_df.selectExpr("CAST(key AS STRING) as key", "CAST(value AS STRING) as value")
 
 # Example: Parse JSON data from the value column
 # df = df.selectExpr("CAST(value AS STRING)", "from_json(value, schema) as data")
@@ -37,9 +37,10 @@ src_df = src_df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 query = ( src_df
     .writeStream
     .format("parquet")  # Or your desired output format (e.g., "parquet", "delta")
-    # .trigger(continuous='1 second')
+    # .trigger('10 seconds')
+    # .trigger(processingTime="10 seconds")
     .option("checkpointLocation", checkpoint_dir)  # For fault tolerance
-    .option("path",(os.path.join(data_dir,spark_config["raw_users_tbl"]) ))
+    .option("path",(os.path.join(data_dir,spark_config["raw_transactions_tbl"]) ))
     .start()
 )
 
